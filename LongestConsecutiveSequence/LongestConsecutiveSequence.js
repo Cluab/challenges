@@ -1,24 +1,34 @@
 var longestConsecutive = function (nums) {
-  if (nums.length === 0) return 0;
+  //TODO: create length zero case
+  //TODO: const a new set and a longestConsecutiveCount
+  //TODO: loop through the new set const
+  //TODO: check is the current num has a smaller value
+  //TODO: if it doesn't than create a while loop that checks for bigger values by +1
+  //TODO: save the current while loop count
+  //TODO: compare the current longestConsecutiveCount with the while loop count
+  //TODO: return the longestConsecutiveCount
 
-  const numSet = new Set(nums);
-  let longestConsecutiveSet = 0;
+  if (nums.length === 0) {
+    return 0;
+  }
 
-  for (const num of numSet) {
-    if (!numSet.has(num - 1)) {
-      let currentNum = num;
-      let currentStreak = 1;
+  const NumsSet = new Set(nums);
+  let longestConsecutiveCount = 0;
 
-      while (numSet.has(currentNum + 1)) {
-        currentNum++;
-        currentStreak++;
+  for (const num of NumsSet) {
+    if (!NumsSet.has(num - 1)) {
+      let current = num;
+      let count = 0;
+      while (NumsSet.has(current)) {
+        current++;
+        count++;
+        // console.log(count, current);
       }
-
-      longestConsecutiveSet = Math.max(longestConsecutiveSet, currentStreak);
+      longestConsecutiveCount = Math.max(longestConsecutiveCount, count);
     }
   }
 
-  return longestConsecutiveSet;
+  return longestConsecutiveCount;
 };
 
-console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));
+console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]));
